@@ -15,3 +15,14 @@ Note: The response from DeepSeek-R1 can take a few minutes before appearing.
 The data analyzed is a small subset of data from this synthetic dataset from Kaggle: https://www.kaggle.com/datasets/ealaxi/paysim1
 
 ![image](https://github.com/user-attachments/assets/5d1f689b-9c14-4192-b0f0-08dbaf2940be)
+
+## Next Steps
+- Build presentation
+- Improve this proof of concept demo
+
+## Other
+- How can we make this faster?
+- Can we prevent malicious attacks?
+- Can we make alerts load in the UI that aren't static but from a data source checked asynchronously?
+- Can this easily be integrated with the Appian data fraud analysts actually use?
+- Other?
