@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Detection Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+        }
+        .card {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            margin: 0 0 10px 0;
+        }
+        .input-box, .response-box {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fraud Detection Assistant</h1>
+    
+    <div class="card">
+        <h2>Flagged Transaction Alert</h2>
+        <p><strong>🚨 Risk Score: 92/100</strong></p>
+        <p>This transaction was flagged due to an unusual IP address change and a high-value withdrawal. Further investigation is required.</p>
+    </div>
+    
+    <div class="card">
+        <h2>Ask the AI Assistant</h2>
+        <input type="text" id="query" class="input-box" placeholder="Ask about this transaction...">
+        <button class="button" onclick="handleQuerySubmit()">Submit Query</button>
+    </div>
+    
+    <div class="card" id="response-card" style="display: none;">
+        <h2>AI Response</h2>
+        <textarea id="response" class="response-box" readonly></textarea>
+    </div>
+    
+    <script>
+        function handleQuerySubmit() {
+            const query = document.getElementById("query").value;
+            const responseCard = document.getElementById("response-card");
+            const responseBox = document.getElementById("response");
+
+            fetch("http://localhost:5001/proxy/analyze", { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json" // Ensure the Content-Type is set to JSON
+                },
+                body: JSON.stringify({ query: query }) // Ensure the body is properly formatted as JSON
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                responseBox.value = data.response;  // Update UI with server response
+                responseCard.style.display = "block";
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                responseBox.value = "Error: " + error.message;
+                responseCard.style.display = "block";
+            });
+        }
+    </script>
+</body>
+</html>
