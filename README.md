@@ -10,7 +10,7 @@
 7. Serve index.html on port 8000 by typing `python -m http.server` in the root folder in another terminal
 8. Point your browser to `http://127.0.0.1:8000/index.html` to use the frontend UI
 
-Note: The response from DeepSeek-R1 can take a minute or two.
+Note: The response from DeepSeek-R1 can take a few minutes before appearing.
 
 The data analyzed is a small subset of data from this synthetic dataset from Kaggle: https://www.kaggle.com/datasets/ealaxi/paysim1
 
