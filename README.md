@@ -6,3 +6,5 @@
 3. Activate the virtual environment E.g., `source myenv/bin/activate`
 4. Install requirements `pip3 install -r requirements.txt`
 5. Run `python3 main.py`
+
+The data analyzed is a small subset of data from this synthetic dataset from Kaggle: https://www.kaggle.com/datasets/ealaxi/paysim1
