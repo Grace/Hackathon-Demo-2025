@@ -25,4 +25,4 @@ The data analyzed is a small subset of data from this synthetic dataset from Kag
 - Can we prevent malicious attacks?
 - Can we make alerts load in the UI that aren't static but from a data source checked asynchronously?
 - Can this easily be integrated with the Appian data fraud analysts actually use?
-- Other?
+- What else?
